@@ -1,0 +1,20 @@
+<div class="dashboard-container">
+
+  <h1>Salas</h1>
+
+  <mat-form-field appearance="outline">
+    <mat-select [(ngModel)]="selectedFloors.value" name="floor" (selectionChange)="onFloorChange()">
+      @for (floor of floors; track floor) {
+        <mat-option [value]="floor.value">{{ floor.viewValue }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <mat-divider />
+
+  <div class="floor-component">
+    <app-floor [selectedFloor]="selectedFloors.viewValue"></app-floor>
+  </div>
+
+</div>
+

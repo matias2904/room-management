@@ -1,0 +1,35 @@
+<mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title-group>
+      <mat-card-title>{{ selectedFloor }}</mat-card-title>
+      <button mat-flat-button (click)="addRoom()">Añadir sala</button>
+    </mat-card-title-group>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="filter-container">
+      <mat-form-field appearance="outline" class="filter-item">
+        <input matInput type="number" placeholder="Capacidad exacta" [(ngModel)]="minCapacity">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="filter-item">
+        <mat-select placeholder="Ocupación mínima" [(ngModel)]="occupancy">
+          @for (option of occupancyOptions; track option) {
+            <mat-option [value]="option">{{ option }}%</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <button mat-flat-button (click)="applyFilters()">Filtrar</button>
+      <button mat-flat-button (click)="resetFilters()">Resetear filtros</button>
+    </div>
+
+    @if (filteredRooms.length === 0){
+      <h5>NO HAY SALAS DISPONIBLES</h5>
+    } @else {
+      <div class="room-container">
+        @for (room of filteredRooms; track room) {
+          <app-room class="room-item" [roomDetails]="room" [selectedFloor]="selectedFloor" (deleteRoom)="removeRoom(room.id)"></app-room>
+        }
+      </div>
+    }
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,23 @@
+<mat-card appearance="outlined" class="room-card">
+  <mat-card-header>
+    <mat-card-title>Sala {{selectedFloor | lowercase}}</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <h5 class="margin-form-field">Capacidad máxima</h5>
+    <mat-form-field class="full-width" appearance="outline">
+      <input matInput [(ngModel)]="roomDetails.maxCapacity" name="maxCapacity" type="number" [disabled]="!isEditing">
+    </mat-form-field>
+
+    <h5 class="margin-form-field">Ocupación</h5>
+    <mat-form-field class="full-width" appearance="outline">
+      <input matInput [(ngModel)]="roomDetails.occupancy" name="occupancy" type="number" min="0" max="100" [disabled]="!isEditing">
+      <span matTextSuffix>%</span>
+    </mat-form-field>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-flat-button (click)="removeRoom()">Eliminar</button>
+    <button mat-flat-button (click)="toggleEdit()">{{ isEditing ? 'Guardar' : 'Modificar' }}</button>
+  </mat-card-actions>
+</mat-card>
