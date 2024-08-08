@@ -1,5 +1,7 @@
-# 1- Descargar el repositorio
-# 2- Instalar dependencias: 
+# 1- Clonar el o escargar el repositorio
+git clone https://github.com/matias2904/room-management.git
+cd nombre-del-repositorio
+# 2- Instalar dependencias:
 npm install
 # 3- Ejecutar la aplicación: 
 ng serve
